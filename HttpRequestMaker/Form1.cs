@@ -12,6 +12,7 @@ using System.Collections.Specialized;
 using System.IO;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.Drawing.Imaging;
 
 namespace HttpRequestMaker
 {
@@ -340,7 +341,7 @@ namespace HttpRequestMaker
         {
             switch (e.TabPageIndex)
             {
-                case 0:
+                case 0://Raw
                     if (lastRequest != null && lastRequest.HasRequested)
                     {
                         if (lastRequest.responseString != "")
@@ -357,7 +358,7 @@ namespace HttpRequestMaker
                         RawTextBox.Text = "No request made";
                     }
                     break;
-                case 1:
+                case 1://JSON
                     if (lastRequest != null && lastRequest.HasRequested)
                     {
                         if (lastRequest.responseString != "")
@@ -373,6 +374,34 @@ namespace HttpRequestMaker
                     else
                     {
                         JSONTextBox.Text = "No request made";
+                    }
+                    break;
+                case 2://Image
+                    if (lastRequest != null && lastRequest.HasRequested)
+                    {
+                        if (lastRequest.responseBytes != null && lastRequest.responseBytes.Length > 0)
+                        {
+                            try
+                            {
+                                using (var memStream = new MemoryStream(lastRequest.responseBytes))
+                                {
+                                    ImageBox.Image = Image.FromStream(memStream);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Image could not be loading correctly.\nError:\n" + ex.ToString(), "Error", MessageBoxButtons.OK);
+                                ImageBox.Image = Image.FromFile("noImage.png");
+                            }
+                        }
+                        else
+                        {
+                            ImageBox.Image = Image.FromFile("noImage.png");
+                        }
+                    }
+                    else
+                    {
+                        ImageBox.Image = Image.FromFile("noImage.png");
                     }
                     break;
             }
@@ -447,6 +476,12 @@ namespace HttpRequestMaker
             }
 
             UpdateFileList();
+        }
+
+        private void ImageSaveButton_Click(object sender, EventArgs e)
+        {
+            //currently just saves with .png extension
+            ImageBox.Image.Save("image.png");
         }
     }
 

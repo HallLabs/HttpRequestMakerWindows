@@ -62,6 +62,7 @@
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.FileNameBox = new System.Windows.Forms.TextBox();
             this.UploadFilesButton = new System.Windows.Forms.Button();
+            this.ImageSaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RequestSplitContainer)).BeginInit();
             this.RequestSplitContainer.Panel1.SuspendLayout();
             this.RequestSplitContainer.Panel2.SuspendLayout();
@@ -340,6 +341,7 @@
             // 
             // ImageTab
             // 
+            this.ImageTab.Controls.Add(this.ImageSaveButton);
             this.ImageTab.Controls.Add(this.ImageBox);
             this.ImageTab.Location = new System.Drawing.Point(4, 22);
             this.ImageTab.Name = "ImageTab";
@@ -350,10 +352,9 @@
             // 
             // ImageBox
             // 
-            this.ImageBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ImageBox.Location = new System.Drawing.Point(0, 0);
             this.ImageBox.Name = "ImageBox";
-            this.ImageBox.Size = new System.Drawing.Size(752, 274);
+            this.ImageBox.Size = new System.Drawing.Size(702, 274);
             this.ImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImageBox.TabIndex = 0;
             this.ImageBox.TabStop = false;
@@ -441,6 +442,16 @@
             this.UploadFilesButton.UseVisualStyleBackColor = true;
             this.UploadFilesButton.Click += new System.EventHandler(this.UploadFilesButton_Click);
             // 
+            // ImageSaveButton
+            // 
+            this.ImageSaveButton.Location = new System.Drawing.Point(708, 176);
+            this.ImageSaveButton.Name = "ImageSaveButton";
+            this.ImageSaveButton.Size = new System.Drawing.Size(41, 95);
+            this.ImageSaveButton.TabIndex = 1;
+            this.ImageSaveButton.Text = "Save";
+            this.ImageSaveButton.UseVisualStyleBackColor = true;
+            this.ImageSaveButton.Click += new System.EventHandler(this.ImageSaveButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,6 +525,7 @@
         private System.Windows.Forms.OpenFileDialog OpenDialog;
         private System.Windows.Forms.TextBox FileNameBox;
         private System.Windows.Forms.Button UploadFilesButton;
+        private System.Windows.Forms.Button ImageSaveButton;
     }
 }
 
