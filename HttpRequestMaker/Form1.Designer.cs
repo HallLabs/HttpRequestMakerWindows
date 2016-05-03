@@ -53,6 +53,7 @@
             this.JSONFormatButton = new System.Windows.Forms.Button();
             this.JSONTextBox = new System.Windows.Forms.RichTextBox();
             this.ImageTab = new System.Windows.Forms.TabPage();
+            this.ImageSaveButton = new System.Windows.Forms.Button();
             this.ImageBox = new System.Windows.Forms.PictureBox();
             this.FunctionComboBox = new System.Windows.Forms.ComboBox();
             this.RequestButton = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.FileNameBox = new System.Windows.Forms.TextBox();
             this.UploadFilesButton = new System.Windows.Forms.Button();
-            this.ImageSaveButton = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.RequestSplitContainer)).BeginInit();
             this.RequestSplitContainer.Panel1.SuspendLayout();
             this.RequestSplitContainer.Panel2.SuspendLayout();
@@ -72,15 +73,20 @@
             this.JSONTab.SuspendLayout();
             this.ImageTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // URLTextBox
             // 
             this.URLTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.URLTextBox.Location = new System.Drawing.Point(38, 6);
+            this.URLTextBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.URLTextBox.Location = new System.Drawing.Point(33, 6);
             this.URLTextBox.Name = "URLTextBox";
-            this.URLTextBox.Size = new System.Drawing.Size(734, 20);
+            this.URLTextBox.Size = new System.Drawing.Size(739, 20);
             this.URLTextBox.TabIndex = 0;
             this.URLTextBox.Text = "http://admin.pinsimple.com/api/";
             this.URLTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SuppressEnterSound);
@@ -88,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(7, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 13);
             this.label1.TabIndex = 1;
@@ -99,7 +105,7 @@
             this.RequestSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestSplitContainer.Location = new System.Drawing.Point(12, 32);
+            this.RequestSplitContainer.Location = new System.Drawing.Point(4, 32);
             this.RequestSplitContainer.Name = "RequestSplitContainer";
             // 
             // RequestSplitContainer.Panel1
@@ -121,15 +127,15 @@
             this.RequestSplitContainer.Panel2.Controls.Add(this.ContentAddButton);
             this.RequestSplitContainer.Panel2.Controls.Add(this.ContentValueBox);
             this.RequestSplitContainer.Panel2.Controls.Add(this.ContentNameBox);
-            this.RequestSplitContainer.Size = new System.Drawing.Size(657, 209);
-            this.RequestSplitContainer.SplitterDistance = 327;
+            this.RequestSplitContainer.Size = new System.Drawing.Size(673, 191);
+            this.RequestSplitContainer.SplitterDistance = 334;
             this.RequestSplitContainer.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(147, 170);
+            this.label5.Location = new System.Drawing.Point(147, 152);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 6;
@@ -139,7 +145,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 170);
+            this.label4.Location = new System.Drawing.Point(3, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 5;
@@ -148,7 +154,7 @@
             // HeaderAddButton
             // 
             this.HeaderAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.HeaderAddButton.Location = new System.Drawing.Point(231, 183);
+            this.HeaderAddButton.Location = new System.Drawing.Point(238, 165);
             this.HeaderAddButton.Name = "HeaderAddButton";
             this.HeaderAddButton.Size = new System.Drawing.Size(93, 23);
             this.HeaderAddButton.TabIndex = 4;
@@ -160,9 +166,10 @@
             // 
             this.HeaderValueBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HeaderValueBox.Location = new System.Drawing.Point(147, 186);
+            this.HeaderValueBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderValueBox.Location = new System.Drawing.Point(147, 168);
             this.HeaderValueBox.Name = "HeaderValueBox";
-            this.HeaderValueBox.Size = new System.Drawing.Size(78, 20);
+            this.HeaderValueBox.Size = new System.Drawing.Size(85, 20);
             this.HeaderValueBox.TabIndex = 3;
             this.HeaderValueBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SuppressEnterSound);
             this.HeaderValueBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HeaderValueBox_KeyUp);
@@ -170,7 +177,8 @@
             // HeaderNameBox
             // 
             this.HeaderNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.HeaderNameBox.Location = new System.Drawing.Point(6, 186);
+            this.HeaderNameBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderNameBox.Location = new System.Drawing.Point(6, 168);
             this.HeaderNameBox.Name = "HeaderNameBox";
             this.HeaderNameBox.Size = new System.Drawing.Size(135, 20);
             this.HeaderNameBox.TabIndex = 2;
@@ -189,10 +197,11 @@
             this.HeadersListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HeadersListBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HeadersListBox.FormattingEnabled = true;
             this.HeadersListBox.Location = new System.Drawing.Point(3, 16);
             this.HeadersListBox.Name = "HeadersListBox";
-            this.HeadersListBox.Size = new System.Drawing.Size(321, 134);
+            this.HeadersListBox.Size = new System.Drawing.Size(328, 108);
             this.HeadersListBox.TabIndex = 0;
             this.HeadersListBox.SelectedIndexChanged += new System.EventHandler(this.HeadersListBox_SelectedIndexChanged);
             this.HeadersListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HeadersListBox_KeyUp);
@@ -201,7 +210,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(147, 167);
+            this.label7.Location = new System.Drawing.Point(147, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 6;
@@ -220,7 +229,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 167);
+            this.label6.Location = new System.Drawing.Point(3, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 5;
@@ -231,10 +240,11 @@
             this.ContentListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContentListBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ContentListBox.FormattingEnabled = true;
             this.ContentListBox.Location = new System.Drawing.Point(3, 16);
             this.ContentListBox.Name = "ContentListBox";
-            this.ContentListBox.Size = new System.Drawing.Size(320, 134);
+            this.ContentListBox.Size = new System.Drawing.Size(329, 108);
             this.ContentListBox.TabIndex = 0;
             this.ContentListBox.SelectedIndexChanged += new System.EventHandler(this.ContentListBox_SelectedIndexChanged);
             this.ContentListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ContentListBox_KeyUp);
@@ -242,7 +252,7 @@
             // ContentAddButton
             // 
             this.ContentAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContentAddButton.Location = new System.Drawing.Point(232, 180);
+            this.ContentAddButton.Location = new System.Drawing.Point(241, 162);
             this.ContentAddButton.Name = "ContentAddButton";
             this.ContentAddButton.Size = new System.Drawing.Size(91, 23);
             this.ContentAddButton.TabIndex = 4;
@@ -254,9 +264,10 @@
             // 
             this.ContentValueBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContentValueBox.Location = new System.Drawing.Point(147, 183);
+            this.ContentValueBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContentValueBox.Location = new System.Drawing.Point(147, 165);
             this.ContentValueBox.Name = "ContentValueBox";
-            this.ContentValueBox.Size = new System.Drawing.Size(79, 20);
+            this.ContentValueBox.Size = new System.Drawing.Size(88, 20);
             this.ContentValueBox.TabIndex = 3;
             this.ContentValueBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SuppressEnterSound);
             this.ContentValueBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ContentValueBox_KeyUp);
@@ -264,22 +275,22 @@
             // ContentNameBox
             // 
             this.ContentNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ContentNameBox.Location = new System.Drawing.Point(6, 183);
+            this.ContentNameBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContentNameBox.Location = new System.Drawing.Point(6, 165);
             this.ContentNameBox.Name = "ContentNameBox";
             this.ContentNameBox.Size = new System.Drawing.Size(135, 20);
             this.ContentNameBox.TabIndex = 2;
             // 
             // ResponseTabControl
             // 
-            this.ResponseTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ResponseTabControl.Controls.Add(this.RawTab);
             this.ResponseTabControl.Controls.Add(this.JSONTab);
             this.ResponseTabControl.Controls.Add(this.ImageTab);
-            this.ResponseTabControl.Location = new System.Drawing.Point(12, 274);
+            this.ResponseTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResponseTabControl.Location = new System.Drawing.Point(0, 0);
             this.ResponseTabControl.Name = "ResponseTabControl";
             this.ResponseTabControl.SelectedIndex = 0;
-            this.ResponseTabControl.Size = new System.Drawing.Size(760, 300);
+            this.ResponseTabControl.Size = new System.Drawing.Size(784, 252);
             this.ResponseTabControl.TabIndex = 3;
             this.ResponseTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.ResponseTabControl_Selected);
             // 
@@ -297,6 +308,7 @@
             // RawTextBox
             // 
             this.RawTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RawTextBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RawTextBox.Location = new System.Drawing.Point(3, 3);
             this.RawTextBox.Name = "RawTextBox";
             this.RawTextBox.ReadOnly = true;
@@ -319,6 +331,7 @@
             // 
             // JSONFormatButton
             // 
+            this.JSONFormatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.JSONFormatButton.Location = new System.Drawing.Point(547, 245);
             this.JSONFormatButton.Name = "JSONFormatButton";
             this.JSONFormatButton.Size = new System.Drawing.Size(199, 23);
@@ -332,6 +345,7 @@
             this.JSONTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.JSONTextBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JSONTextBox.Location = new System.Drawing.Point(3, 3);
             this.JSONTextBox.Name = "JSONTextBox";
             this.JSONTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -345,16 +359,30 @@
             this.ImageTab.Controls.Add(this.ImageBox);
             this.ImageTab.Location = new System.Drawing.Point(4, 22);
             this.ImageTab.Name = "ImageTab";
-            this.ImageTab.Size = new System.Drawing.Size(752, 274);
+            this.ImageTab.Size = new System.Drawing.Size(776, 226);
             this.ImageTab.TabIndex = 2;
             this.ImageTab.Text = "Image Data";
             this.ImageTab.UseVisualStyleBackColor = true;
             // 
+            // ImageSaveButton
+            // 
+            this.ImageSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImageSaveButton.Location = new System.Drawing.Point(732, 128);
+            this.ImageSaveButton.Name = "ImageSaveButton";
+            this.ImageSaveButton.Size = new System.Drawing.Size(41, 95);
+            this.ImageSaveButton.TabIndex = 1;
+            this.ImageSaveButton.Text = "Save";
+            this.ImageSaveButton.UseVisualStyleBackColor = true;
+            this.ImageSaveButton.Click += new System.EventHandler(this.ImageSaveButton_Click);
+            // 
             // ImageBox
             // 
+            this.ImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageBox.Location = new System.Drawing.Point(0, 0);
             this.ImageBox.Name = "ImageBox";
-            this.ImageBox.Size = new System.Drawing.Size(702, 274);
+            this.ImageBox.Size = new System.Drawing.Size(726, 226);
             this.ImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImageBox.TabIndex = 0;
             this.ImageBox.TabStop = false;
@@ -362,12 +390,13 @@
             // FunctionComboBox
             // 
             this.FunctionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.FunctionComboBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FunctionComboBox.FormattingEnabled = true;
             this.FunctionComboBox.Items.AddRange(new object[] {
             "GET",
             "POST",
             "DELETE"});
-            this.FunctionComboBox.Location = new System.Drawing.Point(12, 247);
+            this.FunctionComboBox.Location = new System.Drawing.Point(7, 229);
             this.FunctionComboBox.Name = "FunctionComboBox";
             this.FunctionComboBox.Size = new System.Drawing.Size(121, 21);
             this.FunctionComboBox.TabIndex = 4;
@@ -377,9 +406,9 @@
             // 
             this.RequestButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestButton.Location = new System.Drawing.Point(139, 245);
+            this.RequestButton.Location = new System.Drawing.Point(134, 229);
             this.RequestButton.Name = "RequestButton";
-            this.RequestButton.Size = new System.Drawing.Size(507, 23);
+            this.RequestButton.Size = new System.Drawing.Size(524, 23);
             this.RequestButton.TabIndex = 5;
             this.RequestButton.Text = "Submit Request";
             this.RequestButton.UseVisualStyleBackColor = true;
@@ -389,8 +418,9 @@
             // 
             this.FilesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilesListBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FilesListBox.FormattingEnabled = true;
-            this.FilesListBox.Location = new System.Drawing.Point(675, 45);
+            this.FilesListBox.Location = new System.Drawing.Point(683, 35);
             this.FilesListBox.Name = "FilesListBox";
             this.FilesListBox.Size = new System.Drawing.Size(94, 134);
             this.FilesListBox.TabIndex = 6;
@@ -400,7 +430,7 @@
             // AddFileButton
             // 
             this.AddFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddFileButton.Location = new System.Drawing.Point(675, 212);
+            this.AddFileButton.Location = new System.Drawing.Point(683, 197);
             this.AddFileButton.Name = "AddFileButton";
             this.AddFileButton.Size = new System.Drawing.Size(94, 23);
             this.AddFileButton.TabIndex = 7;
@@ -425,7 +455,8 @@
             // FileNameBox
             // 
             this.FileNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileNameBox.Location = new System.Drawing.Point(675, 186);
+            this.FileNameBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileNameBox.Location = new System.Drawing.Point(683, 171);
             this.FileNameBox.Name = "FileNameBox";
             this.FileNameBox.Size = new System.Drawing.Size(94, 20);
             this.FileNameBox.TabIndex = 9;
@@ -434,7 +465,7 @@
             // UploadFilesButton
             // 
             this.UploadFilesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.UploadFilesButton.Location = new System.Drawing.Point(652, 245);
+            this.UploadFilesButton.Location = new System.Drawing.Point(664, 229);
             this.UploadFilesButton.Name = "UploadFilesButton";
             this.UploadFilesButton.Size = new System.Drawing.Size(113, 23);
             this.UploadFilesButton.TabIndex = 10;
@@ -442,32 +473,39 @@
             this.UploadFilesButton.UseVisualStyleBackColor = true;
             this.UploadFilesButton.Click += new System.EventHandler(this.UploadFilesButton_Click);
             // 
-            // ImageSaveButton
+            // splitContainer1
             // 
-            this.ImageSaveButton.Location = new System.Drawing.Point(708, 176);
-            this.ImageSaveButton.Name = "ImageSaveButton";
-            this.ImageSaveButton.Size = new System.Drawing.Size(41, 95);
-            this.ImageSaveButton.TabIndex = 1;
-            this.ImageSaveButton.Text = "Save";
-            this.ImageSaveButton.UseVisualStyleBackColor = true;
-            this.ImageSaveButton.Click += new System.EventHandler(this.ImageSaveButton_Click);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.FilesListBox);
+            this.splitContainer1.Panel1.Controls.Add(this.RequestButton);
+            this.splitContainer1.Panel1.Controls.Add(this.UploadFilesButton);
+            this.splitContainer1.Panel1.Controls.Add(this.URLTextBox);
+            this.splitContainer1.Panel1.Controls.Add(this.FileNameBox);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.RequestSplitContainer);
+            this.splitContainer1.Panel1.Controls.Add(this.AddFileButton);
+            this.splitContainer1.Panel1.Controls.Add(this.FunctionComboBox);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.ResponseTabControl);
+            this.splitContainer1.Size = new System.Drawing.Size(784, 511);
+            this.splitContainer1.SplitterDistance = 255;
+            this.splitContainer1.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 586);
-            this.Controls.Add(this.UploadFilesButton);
-            this.Controls.Add(this.FileNameBox);
+            this.ClientSize = new System.Drawing.Size(784, 511);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.AddFileButton);
-            this.Controls.Add(this.FilesListBox);
-            this.Controls.Add(this.RequestButton);
-            this.Controls.Add(this.FunctionComboBox);
-            this.Controls.Add(this.ResponseTabControl);
-            this.Controls.Add(this.RequestSplitContainer);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.URLTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 550);
             this.Name = "Form1";
@@ -485,6 +523,11 @@
             this.JSONTab.ResumeLayout(false);
             this.ImageTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -526,6 +569,7 @@
         private System.Windows.Forms.TextBox FileNameBox;
         private System.Windows.Forms.Button UploadFilesButton;
         private System.Windows.Forms.Button ImageSaveButton;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

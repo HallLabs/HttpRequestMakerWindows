@@ -88,6 +88,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="corruptImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="http.ico" />
     <None Include="noImage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

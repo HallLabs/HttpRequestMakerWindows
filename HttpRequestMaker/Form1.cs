@@ -390,8 +390,7 @@ namespace HttpRequestMaker
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show("Image could not be loading correctly.\nError:\n" + ex.ToString(), "Error", MessageBoxButtons.OK);
-                                ImageBox.Image = Image.FromFile("noImage.png");
+                                ImageBox.Image = Image.FromFile("corruptImage.png");
                             }
                         }
                         else
