@@ -300,7 +300,7 @@
             this.RawTab.Location = new System.Drawing.Point(4, 22);
             this.RawTab.Name = "RawTab";
             this.RawTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RawTab.Size = new System.Drawing.Size(752, 274);
+            this.RawTab.Size = new System.Drawing.Size(776, 226);
             this.RawTab.TabIndex = 0;
             this.RawTab.Text = "Raw";
             this.RawTab.UseVisualStyleBackColor = true;
@@ -313,7 +313,7 @@
             this.RawTextBox.Name = "RawTextBox";
             this.RawTextBox.ReadOnly = true;
             this.RawTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RawTextBox.Size = new System.Drawing.Size(746, 268);
+            this.RawTextBox.Size = new System.Drawing.Size(770, 220);
             this.RawTextBox.TabIndex = 0;
             this.RawTextBox.Text = "No request made";
             // 
@@ -324,7 +324,7 @@
             this.JSONTab.Location = new System.Drawing.Point(4, 22);
             this.JSONTab.Name = "JSONTab";
             this.JSONTab.Padding = new System.Windows.Forms.Padding(3);
-            this.JSONTab.Size = new System.Drawing.Size(752, 274);
+            this.JSONTab.Size = new System.Drawing.Size(776, 226);
             this.JSONTab.TabIndex = 1;
             this.JSONTab.Text = "JSON";
             this.JSONTab.UseVisualStyleBackColor = true;
@@ -396,11 +396,12 @@
             "GET",
             "POST",
             "DELETE"});
-            this.FunctionComboBox.Location = new System.Drawing.Point(7, 229);
+            this.FunctionComboBox.Location = new System.Drawing.Point(10, 229);
             this.FunctionComboBox.Name = "FunctionComboBox";
-            this.FunctionComboBox.Size = new System.Drawing.Size(121, 21);
+            this.FunctionComboBox.Size = new System.Drawing.Size(118, 21);
             this.FunctionComboBox.TabIndex = 4;
             this.FunctionComboBox.Text = "POST";
+            this.FunctionComboBox.SelectedIndexChanged += new System.EventHandler(this.FunctionComboBox_SelectedIndexChanged);
             // 
             // RequestButton
             // 

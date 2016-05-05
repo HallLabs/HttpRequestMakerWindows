@@ -482,6 +482,26 @@ namespace HttpRequestMaker
             //currently just saves with .png extension
             ImageBox.Image.Save("image.png");
         }
+
+        private void FunctionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FunctionComboBox.Text == "GET")
+            {
+                ContentAddButton.Enabled = false;
+                ContentListBox.Enabled = false;
+                ContentListBox.BackColor = Color.LightGray;
+                ContentNameBox.Enabled = false;
+                ContentValueBox.Enabled = false;
+            }
+            else
+            {
+                ContentAddButton.Enabled = true;
+                ContentListBox.Enabled = true;
+                ContentListBox.BackColor = Color.White;
+                ContentNameBox.Enabled = true;
+                ContentValueBox.Enabled = true;
+            }
+        }
     }
 
     public class MyRequest
