@@ -64,6 +64,9 @@
             this.FileNameBox = new System.Windows.Forms.TextBox();
             this.UploadFilesButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.HistoryLoadButton = new System.Windows.Forms.Button();
+            this.HistoryListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.RequestSplitContainer)).BeginInit();
             this.RequestSplitContainer.Panel1.SuspendLayout();
             this.RequestSplitContainer.Panel2.SuspendLayout();
@@ -77,6 +80,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // URLTextBox
@@ -290,7 +297,7 @@
             this.ResponseTabControl.Location = new System.Drawing.Point(0, 0);
             this.ResponseTabControl.Name = "ResponseTabControl";
             this.ResponseTabControl.SelectedIndex = 0;
-            this.ResponseTabControl.Size = new System.Drawing.Size(784, 252);
+            this.ResponseTabControl.Size = new System.Drawing.Size(628, 252);
             this.ResponseTabControl.TabIndex = 3;
             this.ResponseTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.ResponseTabControl_Selected);
             // 
@@ -300,7 +307,7 @@
             this.RawTab.Location = new System.Drawing.Point(4, 22);
             this.RawTab.Name = "RawTab";
             this.RawTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RawTab.Size = new System.Drawing.Size(776, 226);
+            this.RawTab.Size = new System.Drawing.Size(620, 226);
             this.RawTab.TabIndex = 0;
             this.RawTab.Text = "Raw";
             this.RawTab.UseVisualStyleBackColor = true;
@@ -313,7 +320,7 @@
             this.RawTextBox.Name = "RawTextBox";
             this.RawTextBox.ReadOnly = true;
             this.RawTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RawTextBox.Size = new System.Drawing.Size(770, 220);
+            this.RawTextBox.Size = new System.Drawing.Size(614, 220);
             this.RawTextBox.TabIndex = 0;
             this.RawTextBox.Text = "No request made";
             // 
@@ -324,7 +331,7 @@
             this.JSONTab.Location = new System.Drawing.Point(4, 22);
             this.JSONTab.Name = "JSONTab";
             this.JSONTab.Padding = new System.Windows.Forms.Padding(3);
-            this.JSONTab.Size = new System.Drawing.Size(776, 226);
+            this.JSONTab.Size = new System.Drawing.Size(620, 226);
             this.JSONTab.TabIndex = 1;
             this.JSONTab.Text = "JSON";
             this.JSONTab.UseVisualStyleBackColor = true;
@@ -359,7 +366,7 @@
             this.ImageTab.Controls.Add(this.ImageBox);
             this.ImageTab.Location = new System.Drawing.Point(4, 22);
             this.ImageTab.Name = "ImageTab";
-            this.ImageTab.Size = new System.Drawing.Size(776, 226);
+            this.ImageTab.Size = new System.Drawing.Size(620, 226);
             this.ImageTab.TabIndex = 2;
             this.ImageTab.Text = "Image Data";
             this.ImageTab.UseVisualStyleBackColor = true;
@@ -495,10 +502,52 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.ResponseTabControl);
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(784, 511);
             this.splitContainer1.SplitterDistance = 255;
             this.splitContainer1.TabIndex = 11;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.HistoryLoadButton);
+            this.splitContainer2.Panel1.Controls.Add(this.HistoryListBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.ResponseTabControl);
+            this.splitContainer2.Size = new System.Drawing.Size(784, 252);
+            this.splitContainer2.SplitterDistance = 152;
+            this.splitContainer2.TabIndex = 4;
+            // 
+            // HistoryLoadButton
+            // 
+            this.HistoryLoadButton.Enabled = false;
+            this.HistoryLoadButton.Location = new System.Drawing.Point(3, 225);
+            this.HistoryLoadButton.Name = "HistoryLoadButton";
+            this.HistoryLoadButton.Size = new System.Drawing.Size(146, 23);
+            this.HistoryLoadButton.TabIndex = 2;
+            this.HistoryLoadButton.Text = "Load";
+            this.HistoryLoadButton.UseVisualStyleBackColor = true;
+            this.HistoryLoadButton.Click += new System.EventHandler(this.HistoryLoadButton_Click);
+            // 
+            // HistoryListBox
+            // 
+            this.HistoryListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HistoryListBox.FormattingEnabled = true;
+            this.HistoryListBox.Location = new System.Drawing.Point(0, 0);
+            this.HistoryListBox.Name = "HistoryListBox";
+            this.HistoryListBox.Size = new System.Drawing.Size(152, 225);
+            this.HistoryListBox.TabIndex = 0;
+            this.HistoryListBox.SelectedIndexChanged += new System.EventHandler(this.HistoryListBox_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -529,6 +578,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,6 +624,9 @@
         private System.Windows.Forms.Button UploadFilesButton;
         private System.Windows.Forms.Button ImageSaveButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.ListBox HistoryListBox;
+        private System.Windows.Forms.Button HistoryLoadButton;
     }
 }
 

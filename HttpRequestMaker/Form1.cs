@@ -20,6 +20,7 @@ namespace HttpRequestMaker
     {
         public static string SettingsFileName = "settings.config";
 
+        List<MyRequest> requestHistory;
         MyRequest lastRequest;
         MyRequest currentRequest;
 
@@ -29,6 +30,7 @@ namespace HttpRequestMaker
 
             TryLoadSettings();
 
+            requestHistory = new List<MyRequest>();
             currentRequest = new MyRequest(URLTextBox.Text); 
         }
 
@@ -60,6 +62,36 @@ namespace HttpRequestMaker
             {
                 string key = currentRequest.files.ElementAt(i).Key;
                 FilesListBox.Items.Add(key + " = " + currentRequest.files[key]);
+            }
+        }
+        private void UpdateHistoryList()
+        {
+            HistoryListBox.Items.Clear();
+
+            for (int i = 0; i < requestHistory.Count; i++)
+            {
+                string line = requestHistory[i].URL;
+                if (line.Length > 20)
+                {
+                    line = "..." + line.Substring(requestHistory[i].URL.Length - 20 + 3);
+                }
+                HistoryListBox.Items.Add(line);
+            }
+        }
+        private void RefreshResponseView()
+        {
+            //Switch to a different tab and back to make the
+            //tab auto refresh it's content to the new response data
+            int indexWas = ResponseTabControl.SelectedIndex;
+            if (indexWas == 1)
+            {
+                ResponseTabControl.SelectTab(0);
+                ResponseTabControl.SelectTab(indexWas);
+            }
+            else
+            {
+                ResponseTabControl.SelectTab(1);
+                ResponseTabControl.SelectTab(indexWas);
             }
         }
         private void SaveSettings()
@@ -97,6 +129,46 @@ namespace HttpRequestMaker
                 }
             }
         }
+        private void AddToHistory(MyRequest request)
+        {
+            MyRequest newItem = request.Copy();
+            
+            requestHistory.Insert(0, newItem);
+            while (requestHistory.Count > 16)
+            {
+                requestHistory.RemoveAt(16);
+            }
+
+            UpdateHistoryList();
+
+            HistoryListBox.SelectedIndex = 0;
+        }
+        private void LoadFromRequest(MyRequest request)
+        {
+            this.currentRequest = new MyRequest(request.URL);
+            this.currentRequest.requestFunction = request.requestFunction;
+            for (int i = 0; i < request.headers.Count; i++)
+            {
+                string key = request.headers.ElementAt(i).Key;
+                this.currentRequest.headers.Add(key, request.headers[key]);
+            }
+            for (int i = 0; i < request.content.Count; i++)
+            {
+                string key = request.content.ElementAt(i).Key;
+                this.currentRequest.content.Add(key, request.content[key]);
+            }
+            for (int i = 0; i < request.files.Count; i++)
+            {
+                string key = request.files.ElementAt(i).Key;
+                this.currentRequest.files.Add(key, request.files[key]);
+            }
+
+            UpdateHeadersList();
+            UpdateContentList();
+            UpdateFileList();
+            URLTextBox.Text = this.currentRequest.URL;
+            FunctionComboBox.SelectedIndex = (this.currentRequest.requestFunction == "GET" ? 0 : 1);
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -118,19 +190,7 @@ namespace HttpRequestMaker
 
             lastRequest.Request();
 
-            //Switch to a different tab and back to make the
-            //tab auto refresh it's content to the new response data
-            int indexWas = ResponseTabControl.SelectedIndex;
-            if (indexWas == 1)
-            {
-                ResponseTabControl.SelectTab(0);
-                ResponseTabControl.SelectTab(indexWas);
-            }
-            else
-            {
-                ResponseTabControl.SelectTab(1);
-                ResponseTabControl.SelectTab(indexWas);
-            }
+            AddToHistory(lastRequest);
         }
         private void UploadFilesButton_Click(object sender, EventArgs e)
         {
@@ -146,19 +206,7 @@ namespace HttpRequestMaker
 
             lastRequest.UploadAll();
 
-            //Switch to a different tab and back to make the
-            //tab auto refresh it's content to the new response data
-            int indexWas = ResponseTabControl.SelectedIndex;
-            if (indexWas == 1)
-            {
-                ResponseTabControl.SelectTab(0);
-                ResponseTabControl.SelectTab(indexWas);
-            }
-            else
-            {
-                ResponseTabControl.SelectTab(1);
-                ResponseTabControl.SelectTab(indexWas);
-            }
+            AddToHistory(lastRequest);
         }
 
         private void HeaderAddButton_Click(object sender, EventArgs e)
@@ -339,14 +387,15 @@ namespace HttpRequestMaker
         ///<summary>Change tab event</summary>
         private void ResponseTabControl_Selected(object sender, TabControlEventArgs e)
         {
+            MyRequest viewingRequest = (HistoryListBox.SelectedIndex != -1 ? requestHistory[HistoryListBox.SelectedIndex] : null);
             switch (e.TabPageIndex)
             {
                 case 0://Raw
-                    if (lastRequest != null && lastRequest.HasRequested)
+                    if (viewingRequest != null && viewingRequest.HasRequested)
                     {
-                        if (lastRequest.responseString != "")
+                        if (viewingRequest.responseString != "")
                         {
-                            RawTextBox.Text = lastRequest.responseString;
+                            RawTextBox.Text = viewingRequest.responseString;
                         }
                         else
                         {
@@ -355,15 +404,15 @@ namespace HttpRequestMaker
                     }
                     else
                     {
-                        RawTextBox.Text = "No request made";
+                        RawTextBox.Text = "No response selected";
                     }
                     break;
                 case 1://JSON
-                    if (lastRequest != null && lastRequest.HasRequested)
+                    if (viewingRequest != null && viewingRequest.HasRequested)
                     {
-                        if (lastRequest.responseString != "")
+                        if (viewingRequest.responseString != "")
                         {
-                            JSONTextBox.Text = lastRequest.responseString;
+                            JSONTextBox.Text = viewingRequest.responseString;
                             TryFormat();
                         }
                         else
@@ -373,17 +422,17 @@ namespace HttpRequestMaker
                     }
                     else
                     {
-                        JSONTextBox.Text = "No request made";
+                        RawTextBox.Text = "No response selected";
                     }
                     break;
                 case 2://Image
-                    if (lastRequest != null && lastRequest.HasRequested)
+                    if (viewingRequest != null && viewingRequest.HasRequested)
                     {
-                        if (lastRequest.responseBytes != null && lastRequest.responseBytes.Length > 0)
+                        if (viewingRequest.responseBytes != null && viewingRequest.responseBytes.Length > 0)
                         {
                             try
                             {
-                                using (var memStream = new MemoryStream(lastRequest.responseBytes))
+                                using (var memStream = new MemoryStream(viewingRequest.responseBytes))
                                 {
                                     ImageBox.Image = Image.FromStream(memStream);
                                 }
@@ -502,6 +551,28 @@ namespace HttpRequestMaker
                 ContentValueBox.Enabled = true;
             }
         }
+
+        private void HistoryListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (HistoryListBox.SelectedIndex == -1)
+            {
+                HistoryLoadButton.Enabled = false;
+            }
+            else
+            {
+                HistoryLoadButton.Enabled = true;
+            }
+
+            RefreshResponseView();
+        }
+        private void HistoryLoadButton_Click(object sender, EventArgs e)
+        {
+            //neither of those should really happen but just to be safe
+            if (HistoryListBox.SelectedIndex != -1 && HistoryListBox.SelectedIndex < requestHistory.Count)
+            {
+                LoadFromRequest(requestHistory[HistoryListBox.SelectedIndex]);
+            }
+        }
     }
 
     public class MyRequest
@@ -551,6 +622,7 @@ namespace HttpRequestMaker
             newRequest.requestFunction = this.requestFunction;
             newRequest.responseBytes = this.responseBytes;
             newRequest.responseString = this.responseString;
+            newRequest.hasRequested = this.hasRequested;
 
             return newRequest;
         }
