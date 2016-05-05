@@ -528,6 +528,8 @@
             // 
             // HistoryLoadButton
             // 
+            this.HistoryLoadButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryLoadButton.Enabled = false;
             this.HistoryLoadButton.Location = new System.Drawing.Point(3, 225);
             this.HistoryLoadButton.Name = "HistoryLoadButton";
