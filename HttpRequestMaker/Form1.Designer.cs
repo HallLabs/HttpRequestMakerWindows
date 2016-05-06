@@ -339,9 +339,9 @@
             // JSONFormatButton
             // 
             this.JSONFormatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.JSONFormatButton.Location = new System.Drawing.Point(547, 245);
+            this.JSONFormatButton.Location = new System.Drawing.Point(566, 139);
             this.JSONFormatButton.Name = "JSONFormatButton";
-            this.JSONFormatButton.Size = new System.Drawing.Size(199, 23);
+            this.JSONFormatButton.Size = new System.Drawing.Size(51, 81);
             this.JSONFormatButton.TabIndex = 2;
             this.JSONFormatButton.Text = "Try Format";
             this.JSONFormatButton.UseVisualStyleBackColor = true;
@@ -356,7 +356,7 @@
             this.JSONTextBox.Location = new System.Drawing.Point(3, 3);
             this.JSONTextBox.Name = "JSONTextBox";
             this.JSONTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.JSONTextBox.Size = new System.Drawing.Size(743, 241);
+            this.JSONTextBox.Size = new System.Drawing.Size(557, 220);
             this.JSONTextBox.TabIndex = 1;
             this.JSONTextBox.Text = "No request made";
             // 
@@ -374,7 +374,7 @@
             // ImageSaveButton
             // 
             this.ImageSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImageSaveButton.Location = new System.Drawing.Point(732, 128);
+            this.ImageSaveButton.Location = new System.Drawing.Point(576, 128);
             this.ImageSaveButton.Name = "ImageSaveButton";
             this.ImageSaveButton.Size = new System.Drawing.Size(41, 95);
             this.ImageSaveButton.TabIndex = 1;
@@ -389,7 +389,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageBox.Location = new System.Drawing.Point(0, 0);
             this.ImageBox.Name = "ImageBox";
-            this.ImageBox.Size = new System.Drawing.Size(726, 226);
+            this.ImageBox.Size = new System.Drawing.Size(570, 223);
             this.ImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImageBox.TabIndex = 0;
             this.ImageBox.TabStop = false;
