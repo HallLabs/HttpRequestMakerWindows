@@ -68,14 +68,85 @@ namespace HttpRequestMaker
         {
             HistoryListBox.Items.Clear();
 
-            for (int i = 0; i < requestHistory.Count; i++)
+            List<string> lines = new List<string>();
+            for (int i = requestHistory.Count - 1; i >= 0; i--)
             {
                 string line = requestHistory[i].URL;
                 if (line.Length > 20)
                 {
-                    line = "..." + line.Substring(requestHistory[i].URL.Length - 20 + 3);
+                    #region Shorten
+                    int diffPos = -1;
+                    if (i < requestHistory.Count - 1)
+                    {
+                        string lastUrl = requestHistory[i + 1].URL;
+                        for (int i2 = 0; i2 < lastUrl.Length && i2 < line.Length; i2++)
+                        {
+                            if (line[i2] != lastUrl[i2])
+                            {
+                                diffPos = i2;
+                                break;
+                            }
+                        }
+                        if (line.Length != lastUrl.Length && diffPos == -1)
+                            diffPos = Math.Min(line.Length, lastUrl.Length);
+                    }
+                    if (diffPos != -1)
+                    {
+                        diffPos = Math.Max(0, diffPos - 2);
+                    }
+                    string newLine = "";
+                    int maxLength = 20;
+                    if (diffPos == -1)
+                    {
+                        if (i < requestHistory.Count - 1)
+                        {
+                            newLine = lines[lines.Count - 1];
+                        }
+                        else
+                        {
+                            if (line.Length > maxLength)
+                                newLine = "..." + line.Substring(Math.Max(0, line.Length - (maxLength - 3)));
+                            else
+                                newLine = line;
+                        }
+                    }
+                    else if (line.Length - diffPos > maxLength)
+                    {
+                        if (diffPos == 0)
+                        {
+                            newLine = line.Substring(0, maxLength - 3) + "...";
+                        }
+                        else
+                        {
+                            newLine = "..." + line.Substring(diffPos, maxLength - 6) + "...";
+                        }
+                    }
+                    else
+                    {
+                        if (line.Length > maxLength)
+                            newLine = "..." + line.Substring(Math.Max(0, line.Length - (maxLength - 3)));
+                        else
+                            newLine = line;
+                    }
+                    //if (startPos != 0)
+                    //    newLine = "...";
+                    //for (int i2 = startPos; i2 < line.Length && newLine.Length < 20; i2++)
+                    //{
+                    //    newLine += line[i2];
+                    //    if (newLine.Length == 20 - 3 && line.Length - i2 > 3)
+                    //    {
+                    //        newLine += "...";
+                    //    }
+                    //}
+                    line = newLine;
+                    #endregion
                 }
-                HistoryListBox.Items.Add(line);
+                lines.Add(line);
+            }
+
+            for (int i = lines.Count - 1; i >= 0; i--)
+            {
+                HistoryListBox.Items.Add(lines[i]);
             }
         }
         private void RefreshResponseView()
