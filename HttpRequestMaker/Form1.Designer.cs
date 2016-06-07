@@ -55,6 +55,17 @@
             this.ImageTab = new System.Windows.Forms.TabPage();
             this.ImageSaveButton = new System.Windows.Forms.Button();
             this.ImageBox = new System.Windows.Forms.PictureBox();
+            this.InfoTab = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ErrorMessageBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ErrorSourceBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ResponseHeaderListBox = new System.Windows.Forms.ListBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ContentTypeBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ResponseCodeBox = new System.Windows.Forms.TextBox();
             this.FunctionComboBox = new System.Windows.Forms.ComboBox();
             this.RequestButton = new System.Windows.Forms.Button();
             this.FilesListBox = new System.Windows.Forms.ListBox();
@@ -64,6 +75,7 @@
             this.FileNameBox = new System.Windows.Forms.TextBox();
             this.UploadFilesButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label9 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.HistoryLoadButton = new System.Windows.Forms.Button();
             this.HistoryListBox = new System.Windows.Forms.ListBox();
@@ -76,6 +88,7 @@
             this.JSONTab.SuspendLayout();
             this.ImageTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
+            this.InfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -208,7 +221,7 @@
             this.HeadersListBox.FormattingEnabled = true;
             this.HeadersListBox.Location = new System.Drawing.Point(3, 16);
             this.HeadersListBox.Name = "HeadersListBox";
-            this.HeadersListBox.Size = new System.Drawing.Size(328, 108);
+            this.HeadersListBox.Size = new System.Drawing.Size(328, 134);
             this.HeadersListBox.TabIndex = 0;
             this.HeadersListBox.SelectedIndexChanged += new System.EventHandler(this.HeadersListBox_SelectedIndexChanged);
             this.HeadersListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HeadersListBox_KeyUp);
@@ -251,7 +264,7 @@
             this.ContentListBox.FormattingEnabled = true;
             this.ContentListBox.Location = new System.Drawing.Point(3, 16);
             this.ContentListBox.Name = "ContentListBox";
-            this.ContentListBox.Size = new System.Drawing.Size(329, 108);
+            this.ContentListBox.Size = new System.Drawing.Size(329, 134);
             this.ContentListBox.TabIndex = 0;
             this.ContentListBox.SelectedIndexChanged += new System.EventHandler(this.ContentListBox_SelectedIndexChanged);
             this.ContentListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ContentListBox_KeyUp);
@@ -293,6 +306,7 @@
             this.ResponseTabControl.Controls.Add(this.RawTab);
             this.ResponseTabControl.Controls.Add(this.JSONTab);
             this.ResponseTabControl.Controls.Add(this.ImageTab);
+            this.ResponseTabControl.Controls.Add(this.InfoTab);
             this.ResponseTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResponseTabControl.Location = new System.Drawing.Point(0, 0);
             this.ResponseTabControl.Name = "ResponseTabControl";
@@ -394,6 +408,121 @@
             this.ImageBox.TabIndex = 0;
             this.ImageBox.TabStop = false;
             // 
+            // InfoTab
+            // 
+            this.InfoTab.Controls.Add(this.label14);
+            this.InfoTab.Controls.Add(this.ErrorMessageBox);
+            this.InfoTab.Controls.Add(this.label13);
+            this.InfoTab.Controls.Add(this.ErrorSourceBox);
+            this.InfoTab.Controls.Add(this.label12);
+            this.InfoTab.Controls.Add(this.ResponseHeaderListBox);
+            this.InfoTab.Controls.Add(this.label11);
+            this.InfoTab.Controls.Add(this.ContentTypeBox);
+            this.InfoTab.Controls.Add(this.label10);
+            this.InfoTab.Controls.Add(this.ResponseCodeBox);
+            this.InfoTab.Location = new System.Drawing.Point(4, 22);
+            this.InfoTab.Name = "InfoTab";
+            this.InfoTab.Padding = new System.Windows.Forms.Padding(3);
+            this.InfoTab.Size = new System.Drawing.Size(620, 226);
+            this.InfoTab.TabIndex = 3;
+            this.InfoTab.Text = "Response Info";
+            this.InfoTab.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(113, 29);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Error Message";
+            // 
+            // ErrorMessageBox
+            // 
+            this.ErrorMessageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ErrorMessageBox.Location = new System.Drawing.Point(113, 45);
+            this.ErrorMessageBox.Name = "ErrorMessageBox";
+            this.ErrorMessageBox.ReadOnly = true;
+            this.ErrorMessageBox.Size = new System.Drawing.Size(499, 20);
+            this.ErrorMessageBox.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "HResult";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // ErrorSourceBox
+            // 
+            this.ErrorSourceBox.Location = new System.Drawing.Point(9, 45);
+            this.ErrorSourceBox.Name = "ErrorSourceBox";
+            this.ErrorSourceBox.ReadOnly = true;
+            this.ErrorSourceBox.Size = new System.Drawing.Size(98, 20);
+            this.ErrorSourceBox.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 68);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(101, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Response Headers:";
+            // 
+            // ResponseHeaderListBox
+            // 
+            this.ResponseHeaderListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseHeaderListBox.FormattingEnabled = true;
+            this.ResponseHeaderListBox.Location = new System.Drawing.Point(9, 84);
+            this.ResponseHeaderListBox.Name = "ResponseHeaderListBox";
+            this.ResponseHeaderListBox.Size = new System.Drawing.Size(603, 134);
+            this.ResponseHeaderListBox.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(226, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Content Type";
+            // 
+            // ContentTypeBox
+            // 
+            this.ContentTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContentTypeBox.Location = new System.Drawing.Point(303, 6);
+            this.ContentTypeBox.Name = "ContentTypeBox";
+            this.ContentTypeBox.ReadOnly = true;
+            this.ContentTypeBox.Size = new System.Drawing.Size(309, 20);
+            this.ContentTypeBox.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Response Code";
+            // 
+            // ResponseCodeBox
+            // 
+            this.ResponseCodeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseCodeBox.Location = new System.Drawing.Point(95, 6);
+            this.ResponseCodeBox.Name = "ResponseCodeBox";
+            this.ResponseCodeBox.ReadOnly = true;
+            this.ResponseCodeBox.Size = new System.Drawing.Size(125, 20);
+            this.ResponseCodeBox.TabIndex = 0;
+            // 
             // FunctionComboBox
             // 
             this.FunctionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -428,9 +557,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FilesListBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FilesListBox.FormattingEnabled = true;
-            this.FilesListBox.Location = new System.Drawing.Point(683, 35);
+            this.FilesListBox.Location = new System.Drawing.Point(683, 48);
             this.FilesListBox.Name = "FilesListBox";
-            this.FilesListBox.Size = new System.Drawing.Size(94, 134);
+            this.FilesListBox.Size = new System.Drawing.Size(94, 121);
             this.FilesListBox.TabIndex = 6;
             this.FilesListBox.SelectedIndexChanged += new System.EventHandler(this.FilesListBox_SelectedIndexChanged);
             this.FilesListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FilesListBox_KeyUp);
@@ -490,6 +619,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label9);
             this.splitContainer1.Panel1.Controls.Add(this.FilesListBox);
             this.splitContainer1.Panel1.Controls.Add(this.RequestButton);
             this.splitContainer1.Panel1.Controls.Add(this.UploadFilesButton);
@@ -506,6 +636,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(784, 511);
             this.splitContainer1.SplitterDistance = 255;
             this.splitContainer1.TabIndex = 11;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(683, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Files";
             // 
             // splitContainer2
             // 
@@ -576,6 +716,8 @@
             this.JSONTab.ResumeLayout(false);
             this.ImageTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
+            this.InfoTab.ResumeLayout(false);
+            this.InfoTab.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -630,6 +772,18 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ListBox HistoryListBox;
         private System.Windows.Forms.Button HistoryLoadButton;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TabPage InfoTab;
+        private System.Windows.Forms.ListBox ResponseHeaderListBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox ContentTypeBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox ResponseCodeBox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox ErrorMessageBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox ErrorSourceBox;
     }
 }
 

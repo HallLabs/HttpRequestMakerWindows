@@ -31,7 +31,12 @@ namespace HttpRequestMaker
             TryLoadSettings();
 
             requestHistory = new List<MyRequest>();
-            currentRequest = new MyRequest(URLTextBox.Text); 
+            currentRequest = new MyRequest(URLTextBox.Text);
+
+            //fix flickering
+            typeof(SplitContainer).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null, splitContainer1, new object[] { true });
         }
 
         private void UpdateHeadersList()
@@ -523,6 +528,50 @@ namespace HttpRequestMaker
                         ImageBox.Image = Image.FromFile("noImage.png");
                     }
                     break;
+                case 3://Response Info
+                    Console.WriteLine("");
+                    if (viewingRequest != null && viewingRequest.HasRequested)
+                    {
+                        if (viewingRequest.IsError)
+                        {
+                            ErrorSourceBox.Text = viewingRequest.error.HResult.ToString();
+                            ErrorMessageBox.Text = viewingRequest.error.Message;
+                            ResponseCodeBox.Text = ((int)viewingRequest.HttpErrorResponse.StatusCode).ToString() + ": " + viewingRequest.HttpErrorResponse.StatusCode.ToString();
+                            Console.WriteLine(ResponseCodeBox.BackColor);
+                            ResponseCodeBox.BackColor = Color.DarkRed;
+                            ResponseCodeBox.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            ErrorSourceBox.Text = "No Error";
+                            ErrorMessageBox.Text = "No Error";
+                            ResponseCodeBox.Text = "200";
+                            ResponseCodeBox.BackColor = Color.Green;
+                            ResponseCodeBox.ForeColor = Color.White;
+                        }
+
+                        ContentTypeBox.Text = viewingRequest.ContentType;
+
+                        ResponseHeaderListBox.Items.Clear();
+                        if (viewingRequest.responseHeaders != null)
+                        {
+                            for (int i = 0; i < viewingRequest.responseHeaders.Count; i++)
+                            {
+                                string headerName = viewingRequest.responseHeaders.GetKey(i);
+                                string headervalue = viewingRequest.responseHeaders[headerName];
+
+                                if (headervalue == "" || headervalue == null)
+                                {
+                                    ResponseHeaderListBox.Items.Add(headerName);
+                                }
+                                else
+                                {
+                                    ResponseHeaderListBox.Items.Add(headerName + " = " + headervalue);
+                                }
+                            }
+                        }
+                    }
+                    break;
             }
         }
 
@@ -644,6 +693,11 @@ namespace HttpRequestMaker
                 LoadFromRequest(requestHistory[HistoryListBox.SelectedIndex]);
             }
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class MyRequest
@@ -652,9 +706,31 @@ namespace HttpRequestMaker
         public string requestFunction;
         public string responseString;
         public byte[] responseBytes;
+        public WebHeaderCollection responseHeaders;
+        public WebException error;
         public Dictionary<string, string> headers;
         public Dictionary<string, string> content;
         public Dictionary<string, string> files;
+
+        public bool IsError { get { return this.error != null; } }
+        public bool IsProtocolError { get { return this.error.Status == WebExceptionStatus.ProtocolError; } }
+        public HttpWebResponse HttpErrorResponse { get { return (HttpWebResponse)this.error.Response; } }
+        public string ErrorMessage { get { return this.error.Message; } }
+        public string ErrorSource { get { return this.error.Source; } }
+        public string ContentType
+        {
+            get
+            {
+                if (this.responseHeaders == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return responseHeaders["content-type"];
+                }
+            }
+        }
 
         protected bool hasRequested;
 
@@ -694,6 +770,8 @@ namespace HttpRequestMaker
             newRequest.responseBytes = this.responseBytes;
             newRequest.responseString = this.responseString;
             newRequest.hasRequested = this.hasRequested;
+            newRequest.error = this.error;
+            newRequest.responseHeaders = this.responseHeaders;
 
             return newRequest;
         }
@@ -728,15 +806,45 @@ namespace HttpRequestMaker
                             nameValues.Add(key, this.content[key]);
                         }
 
-                        this.responseBytes = client.UploadValues(this.URL, nameValues);
+                        try
+                        {
+                            this.responseBytes = client.UploadValues(this.URL, nameValues);
+                            this.responseHeaders = client.ResponseHeaders;
+                        }
+                        catch (WebException ex)
+                        {
+                            this.error = ex;
+                            this.responseHeaders = ex.Response.Headers;
+                            Stream responseStream = ex.Response.GetResponseStream();
+                            this.responseBytes = new byte[responseStream.Length];
+                            responseStream.Read(this.responseBytes, 0, (int)responseStream.Length);
+                            responseStream.Close();
+                            Console.WriteLine("A WebException Occurred. Data is {0} bytes long. Message: {1}", responseBytes.Length, ex.Message);
+                        }
 
-                        this.responseString = Encoding.ASCII.GetString(this.responseBytes);
+                        if (this.responseBytes != null)
+                            this.responseString = Encoding.ASCII.GetString(this.responseBytes);
                     }
                     else
                     {
-                        this.responseBytes = client.DownloadData(this.URL);
+                        try
+                        {
+                            this.responseBytes = client.DownloadData(this.URL);
+                            this.responseHeaders = client.ResponseHeaders;
+                        }
+                        catch (WebException ex)
+                        {
+                            this.error = ex;
+                            this.responseHeaders = ex.Response.Headers;
+                            Stream responseStream = ex.Response.GetResponseStream();
+                            this.responseBytes = new byte[responseStream.Length];
+                            responseStream.Read(this.responseBytes, 0, (int)responseStream.Length);
+                            responseStream.Close();
+                            Console.WriteLine("A WebException Occurred. Data is {0} bytes long. Message: {1}", responseBytes.Length, ex.Message);
+                        }
 
-                        this.responseString = Encoding.ASCII.GetString(this.responseBytes);
+                        if (this.responseBytes != null)
+                            this.responseString = Encoding.ASCII.GetString(this.responseBytes);
                     }
                 }
             }
