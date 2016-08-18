@@ -1,4 +1,4 @@
-# ![Http Request Maker Logo](http://admin.pinsimple.com/images/httpRequestIcon64.png) Http Request Maker (OSX)
+# ![Http Request Maker Logo](http://admin.pinsimple.com/images/httpRequestIcon64.png) Http Request Maker (Windows)
 A relatively small and light weight program to make and send HTTP messages and examine the responses, useful for testing APIs.
 The windows version is programmed in C# using Visual Studios. It is therefore dependent on the .NET library to run.
 
