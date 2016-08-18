@@ -8,15 +8,17 @@ The windows version is programmed in C# using Visual Studios. It is therefore de
  * Send requests to any Uri
  * View response content-body in raw-text or as formatted JSON
  * View history of past responses.
+ * Add files to uploaded
+ * View extra information about Response (content-type, size, status-code, etc.)
+ * Load past request information into UI
+ * View response content-body as Image Data
+ * Save last request and configuration to persist between application sessions.
 
 # Planned Features
- * Add files to uploaded
  * Specifiy default headers
- * View extra information about Response (content-type, size, status-code, etc.)
- * View response content-body as Image Data
- * Load past request information into UI
- * Save request history and configuration to persist between application sessions.
+ * Save request history to configuration file to persist between applicatino sessions.
 
 # Screenshots:
-![Screenshot 1](http://admin.pinsimple.com/images/HttpRequestScreen1.png)
-![Screenshot 2](http://admin.pinsimple.com/images/HttpRequestScreen2.png)
+![Screenshot 1](http://admin.pinsimple.com/images/HttpRequestScreen4.png)
+![Screenshot 2](http://admin.pinsimple.com/images/HttpRequestScreen5.png)
+![Screenshot 3](http://admin.pinsimple.com/images/HttpRequestScreen6.png)
